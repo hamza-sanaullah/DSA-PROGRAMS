@@ -1,0 +1,82 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+bool issorted(int Arr[], int size)
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        if (Arr[i] > Arr[i + 1])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void autocheck(int Arr[], int size)
+{
+    if (issorted(Arr, size))
+    {
+        cout << "Your Arrray is Sorted in the Ascending order";
+    }
+    else
+    {
+        cout << "Your Arrray is not sorted in the Ascending order";
+    }
+}
+
+void Selectionsort(int size, int arr[])
+{
+    if (issorted(arr, size))
+    {
+        cout << "Your Arrray is Already sorted in the Ascending order";
+    }
+    else
+    {
+
+        for (int i = 0; i < size - 1; i++)
+        {
+            int max = i;
+            for (int j = i+1; j < size; j++)
+            {
+                if (arr[j]>arr[max])
+                {
+                    max = j;
+                }
+                
+            }
+            
+            swap(arr[i],arr[max]);
+            
+        }
+
+        cout << "Sorted Array";
+        for (int h = 0; h < size; h++)
+        {
+            cout << arr[h] << " ";
+        }
+        autocheck(arr, size);
+    }
+}
+
+int main()
+{
+
+    int size;
+    cout << "Enter the size of the Array"
+         << "  :";
+    cin >> size;
+    int array[size];
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Enter the " << i << " "
+             << "Element of the Array"
+             << " :";
+        cin >> array[i];
+    }
+    Selectionsort(size, array);
+
+    return 0;
+}
